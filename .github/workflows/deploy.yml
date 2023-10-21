@@ -47,15 +47,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Install and cache dependencies
+        # Using actions in my repository
+        # uses: my-github-username/my-action-repository
+        # Using actions in the same repository
+        uses: ./.github/actions/cached-dependencies  # Github automatically looks for the `actions.yml` file
       - name: Test code
         id: run-tests
         run: npm run test
@@ -71,15 +67,11 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+      - name: Install and cache dependencies
+        # Using actions in my repository
+        # uses: my-github-username/my-action-repository
+        # Using actions in the same repository
+        uses: ./.github/actions/cached-dependencies  # Github automatically looks for the `actions.yml` file
       - name: Build website
         run: npm run build
       - name: Upload artifacts
