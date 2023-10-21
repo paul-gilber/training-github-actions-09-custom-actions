@@ -102,5 +102,9 @@ jobs:
   information:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v3
       - name: Custom JavaScript action
+        # When using action from same repository, include checkout step, not required for actions from another github repository
+        # Error: Can't find 'action.yml', 'action.yaml' or 'Dockerfile' under '/home/runner/work/training-github-actions-09-custom-actions/training-github-actions-09-custom-actions/.github/actions/deploy-s3-javascript'. Did you forget to run actions/checkout before running your local action?
         uses: ./.github/actions/deploy-s3-javascript
