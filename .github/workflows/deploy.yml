@@ -44,7 +44,7 @@ jobs:
         with:
           caching: 'false'
       - name: Output information
-        run: echo "Cache used? ${{ steps.cache-dependencies.outputs.cache }}"
+        run: echo "Cache used? ${{ steps.cache-dependencies.outputs.used-cache }}"
       - name: Lint code
         run: npm run lint
   test:
