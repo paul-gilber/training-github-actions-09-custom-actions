@@ -9,4 +9,8 @@ npm init -y
 npm install @actions/core \
             @actions/github \
             @actions/exec
+
+# Note:
+# - all required dependencies in `node_modules` directory must be included to the repository
+# - github actions will not install and download dependencies
 ```
