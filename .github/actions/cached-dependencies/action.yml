@@ -1,0 +1,25 @@
+# Composite Action
+# https://docs.github.com/en/actions/creating-actions/creating-a-composite-action
+# https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+
+name: Get & Cache Dependencies
+
+description: Get dependencies via npm and cache them
+
+# inputs:
+
+# outputs:
+
+runs:
+  using: composite
+  steps:
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      shell: bash  # Choose shell for running the command
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
