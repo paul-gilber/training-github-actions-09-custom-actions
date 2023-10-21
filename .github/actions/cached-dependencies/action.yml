@@ -6,7 +6,11 @@ name: Get & Cache Dependencies
 
 description: Get dependencies via npm and cache them
 
-# inputs:
+inputs:
+  caching:
+    description: Enable or disable dependency caching
+    required: false
+    default: 'true'
 
 # outputs:
 
@@ -14,6 +18,8 @@ runs:
   using: composite
   steps:
     - name: Cache dependencies
+      # https://docs.github.com/en/actions/learn-github-actions/contexts#inputs-context
+      if: inputs.caching == 'true'
       id: cache
       uses: actions/cache@v3
       with:
@@ -21,5 +27,7 @@ runs:
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
       shell: bash  # Choose shell for running the command
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: >
+        steps.cache.outputs.cache-hit != 'true'
+        || inputs.caching != 'true'
       run: npm ci

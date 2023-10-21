@@ -40,6 +40,8 @@ jobs:
         # uses: my-github-username/my-action-repository
         # Using actions in the same repository
         uses: ./.github/actions/cached-dependencies  # Github automatically looks for the `actions.yml` file
+        with:
+          caching: 'false'
       - name: Lint code
         run: npm run lint
   test:
