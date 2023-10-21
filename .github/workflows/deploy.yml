@@ -5,6 +5,25 @@
 # - no existing community action
 # - contribute back to the community
 
+# https://docs.github.com/en/actions/creating-actions/about-custom-actions#types-of-actions
+# Types of Custom Actions
+# 1. JavaScript Actions
+# 2. Docker Actions
+# 3. Composite Actions
+
+# Java Script Actions
+# - Execute a JavaScript file
+# - Use JavaScript (NodeJS) + any packages of your choice
+
+# Docker Actions
+# - Create a Dockerfile with your required configuration
+# - Perform any task(s) of your choice with any language
+
+# Composite Actions
+# - Combine multiple Workflow Steps in one single Action
+# - Combine run (commands) and uses (actions)
+# - Allows for reusing shared Steps (without extra skills)
+
 name: Deployment
 on:
   push:
