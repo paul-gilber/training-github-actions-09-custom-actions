@@ -23,3 +23,9 @@ outputs:
 runs:
   using: docker
   image: Dockerfile # Path to Dockerfile relative to this action
+
+# Auto-generated Environment Variables available in deployment.py
+# - INPUT_BUCKET-NAME    (INPUT_<input name | uppercase>)
+# - INPUT_BUCKET-REGION  (INPUT_<input name | uppercase>)
+# - INPUT_DIST-FOLDER    (INPUT_<input name | uppercase>)
+# - <environment variable(s) from `env`>
