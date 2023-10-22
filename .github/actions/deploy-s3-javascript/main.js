@@ -23,7 +23,10 @@ function run() {
   // - AWS_SECRET_ACCESS_KEY
   exec.exec(`aws s3 sync ${dist_folder} ${s3_uri} --region ${bucket_region}`) // Run command from terminal
 
-  core.notice('Hello from my custom JavaScript Action!');
+  // Give outputs
+  const website_url = `http://${bucket_name}.s3-website-${bucket_region}.amazonaws.com`;
+
+  core.setOutput('website-url', website_url);
 }
 
 run();
