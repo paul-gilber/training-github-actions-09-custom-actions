@@ -1,0 +1,25 @@
+# https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
+# https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action#creating-an-action-metadata-file
+name: Deploy to AWS S3
+
+description: Deploy a static website via AWS S3
+
+inputs:
+  bucket-name:
+    description: AWS S3 Bucket Name
+    required: true
+  bucket-region:
+    description: The region of the AWS S3 Bucket
+    required: false
+    default: ap-southeast-1  # Asia/Singapore
+  dist-folder:
+    description: The folder containing the deployable files
+    required: true
+
+outputs:
+  website-url:
+    description: The URL of the deployed website
+
+runs:
+  using: docker
+  image: Dockerfile # Path to Dockerfile relative to this action
